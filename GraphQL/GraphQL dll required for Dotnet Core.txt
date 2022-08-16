@@ -1,0 +1,2 @@
+GraphiQL
+GraphQL.Server.Transports.AspNetCore.SystemTextJson;

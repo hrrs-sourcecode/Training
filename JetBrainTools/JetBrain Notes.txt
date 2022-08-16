@@ -1,0 +1,2 @@
+Rest API :
+Tools --> HttpClient --> Create request in HttpClient

@@ -1,0 +1,119 @@
+
+For testing : 
+https://docs.github.com/en/graphql/overview/explorer
+
+Wrote this query :
+query{
+  viewer{
+    id
+    name
+  }
+}
+
+7. Arguments ( Parameter needed to call properties in the query )  
+Example : 
+query{
+  repository(name:"graphql" owner:"facebook"){
+    createdAt
+    description
+    name
+    isPrivate
+  }
+}
+
+8. Schema ( Used to know the parameter to call the query and data type that return from a query ) :
+- Open this page : https://docs.github.com/en/graphql/overview/explorer
+- Login with the user 
+- Click "< Docs" in the 2nd tab 
+
+9. Aliases ( If the query return more than one of the same "select properties" aliases is needed ) 
+Example : 
+query testquery1{
+  dotnetCoreRepo : repository(name:"core" owner:"dotnet"){
+    createdAt
+    description
+    name
+    isPrivate
+    id
+    url
+  }
+  dotnetWPFRepo : repository(name:"wpf" owner:"dotnet"){
+    createdAt
+    description
+    name
+    isPrivate
+    url
+  }    
+}
+
+10. Fragment ( Used to group select that will be called in a query )
+Example :
+query
+{
+  graphQLRepo : repository(name:"graphql" owner:"facebook"){
+    ... repositoryCommonFields
+  }
+  dotnetCoreRepo : repository(name:"core" owner:"dotnet"){
+    id
+    ... repositoryCommonFields
+  }
+  dotnetWPFRepo : repository(name:"wpf" owner:"dotnet"){
+    ... repositoryCommonFields
+  }
+}
+fragment repositoryCommonFields on Repository {
+  name
+  description
+  url
+  createdAt
+}
+
+11. Variable ( ! means mandatory ) 
+Example :
+fragment repositoryCommonFields on Repository {
+  name
+  description
+  url
+  createdAt
+}
+
+query ($owner:String!)
+{
+  dotnetCoreRepo : repository(name:"core" owner:$owner){
+    id
+    ... repositoryCommonFields
+  }
+  dotnetWPFRepo : repository(name:"wpf" owner:$owner){
+    ... repositoryCommonFields
+  }
+}
+
+12. Mutation ( To perform create update delete if the method is post, put and delete )
+Example ( Created project in the github ) : 
+fragment projectCommonFields on Project {
+  id
+  name
+  body
+  url
+  createdAt
+}
+
+mutation addProj ($input:CreateProjectInput!)
+{
+  createProject(input: $input){
+    clientMutationId
+    project{
+      ... projectCommonFields
+    }
+  }
+}
+
+{
+  "input": {
+    "ownerId": "MDQ6VXNlcjU0ODgwMjQ3",
+    "name": "My 2nd GraphQL project",
+    "body": "Test create project from GraphQL",
+    "clientMutationId": "1234567890"
+  }
+}
+
