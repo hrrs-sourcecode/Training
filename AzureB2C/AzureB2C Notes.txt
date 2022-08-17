@@ -1,0 +1,5 @@
+Video Tutorial : 
+https://www.youtube.com/watch?v=M23P7tj_bXA
+
+Text Tutorial : 
+https://docs.microsoft.com/en-us/azure/active-directory-b2c/

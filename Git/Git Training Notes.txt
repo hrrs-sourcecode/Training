@@ -1,0 +1,84 @@
+Location : Find in windows git bash
+
+Default command : 
+ git
+
+Sequence : 
+1. Go to the folder
+2. Make repository
+3. Set config (name and email)
+4. Checkout if there is any changes ( on the log )  
+5. Make the changes in the repository (working tree)
+6. Add the file to the staging
+7. Set config (name and email)
+8. Commit file to the repository
+
+Change Directory :
+ cd d:
+ cd Training
+ cd Git
+ cd test-repo
+ cd .. ( go to the folder below the last one )
+
+Make Repo :
+ git init
+
+Check status :
+ git status
+
+Add file to the staging : 
+ git add index.html
+ git add . ( all file modified, created )
+
+Remove file from the staging : 
+ git rm index.html --cached
+
+Set Config : 
+ git config --local user.name "Harris"
+ git config --local user.email "lucki3r@gmail.com"
+
+Commit :
+ git commit -m "Add file index.html"
+
+Look at commit log : 
+ git log
+ git log -- style.css ( detect changes of a certain file ) 
+ git log --all --decorate --oneline --graph
+
+==================== BRANCH ====================
+Checkout ( pointer ):
+ git checkout bc8b7 -- style.css ( change pointer HEAD by commit number ) 
+ git checkout dosen ( change pointer HEAD by branch name )
+
+Create branch : 
+ git branch dosen ( create copy on the branch )
+ 
+Merge branch :
+ git merge dosen
+
+Check if the branch merged ( check before the branch is ready to delete ) :
+ git branch --merged
+
+Delete branch :
+ git branch -d dosen
+
+=================== Clone ======================
+Check if local repository connected to the github :
+ git remote -v
+
+Clone github to git :
+ git clone https://github.com/hrrs-sourcecode/Training.git
+
+Push git to github :
+ git push
+ git push origin dev ( branch local to master remote )
+
+Create repository in local then push it to the github :
+ git remote add origin https://github.com/hrrs-sourcecode/test-repo.git
+
+Git pull ( get latest version in tfs ) :
+ git pull
+
+Rebase :
+ git rebase dev
+
