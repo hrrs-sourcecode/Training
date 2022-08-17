@@ -7,10 +7,10 @@ namespace GraphQLWebApi.Services;
 public class ProductService : IProductService
 {
     private readonly GraphQLDbContext _dbContext;
-    public ProductService(GraphQLDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
+    //public ProductService(GraphQLDbContext dbContext)
+    //{
+        //_dbContext = dbContext;
+    //}
     private static IList<Product> _productList = new List<Product>
     {
         new Product { ProductId = 1, Name = "Tea", Price = 20000 },
